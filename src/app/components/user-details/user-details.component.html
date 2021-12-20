@@ -1,0 +1,23 @@
+<div class="main" *ngIf="usersService.selectedUser">
+    <mat-card>
+        <mat-card-title>User <b>{{usersService.selectedUser.firstName}} {{usersService.selectedUser.lastName}}</b> details</mat-card-title>
+
+        <h3>Additional info (TODO)</h3>
+        <mat-list>
+            <mat-list-item>Additional info 1: {{this.usersService.details.additional1}} </mat-list-item>
+            <mat-list-item>Additional info 2: {{this.usersService.details.additional2}} </mat-list-item>
+            <mat-list-item>Additional info 3: {{this.usersService.details.additional3}} </mat-list-item>
+        </mat-list>
+        <h3>Assigned cards</h3>
+        <mat-list>
+            <mat-list-item *ngIf="!detailsFound()"> Card number: not found </mat-list-item>
+            <mat-list-item *ngIf="!detailsFound()"> Card data: not found </mat-list-item>
+            <mat-list-item *ngIf="!detailsFound()"> Card format ID: not found </mat-list-item>
+        </mat-list>
+        <mat-list>
+            <mat-list-item *ngIf="detailsFound()"> Card number: {{this.usersService.details.identifications[0].card.cardNumber}} </mat-list-item>
+            <mat-list-item *ngIf="detailsFound()"> Card data: {{this.usersService.details.identifications[0].card.cardData}} </mat-list-item>
+            <mat-list-item *ngIf="detailsFound()"> Card format ID: {{this.usersService.details.identifications[0].card.cardFormatId}} </mat-list-item>
+        </mat-list>
+    </mat-card>
+</div>
