@@ -1,17 +1,7 @@
-import {
-  Component,
-  OnInit
-} from '@angular/core';
-import {
-  AuthorizationService
-} from '../../services/authorization.service'
-import {
-  UsersService
-} from 'src/app/services/users.service';
-import {
-  User,
-  Details
-} from 'src/app/models/user';
+import {Component,OnInit} from '@angular/core';
+import {AuthorizationService} from '../../services/authorization.service'
+import {UsersService} from 'src/app/services/users.service';
+import {User} from 'src/app/models/user';
 
 @Component({
   selector: 'app-user-list',
@@ -19,11 +9,10 @@ import {
   styleUrls: ['./user-list.component.scss']
 })
 export class UserListComponent implements OnInit {
-  title = 'user-list';
-  //  details!: Details;
-  displayedColumns: string[] = ['firstName', 'lastName'];
-  // selectedUser!: User 
-  isAuthenticated: boolean = false;
+ public title = 'user-list';
+ public displayedColumns: string[] = ['firstName', 'lastName']; 
+ public  isAuthenticated: boolean = false;
+ 
   constructor(public authService: AuthorizationService, public usersService: UsersService) {}
 
   ngOnInit(): void {
@@ -37,11 +26,7 @@ export class UserListComponent implements OnInit {
 
   public onSelected(user: User) {
     this.usersService.selectedUser = user;
-    console.log(this.usersService.selectedUser);
-
     this.usersService.getDetails();
-    console.log(this.usersService.details);
-
   }
 
   public detailsFound(): boolean {
