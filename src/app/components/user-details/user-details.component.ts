@@ -31,13 +31,4 @@ export class UserDetailsComponent implements OnInit {
     return this.usersService.details.identifications[0] !== undefined
   }
 
-  public getDetails() {
-    this.httpClient.get(`https://demo.credoid.com/api/users/${this.selectedUser?.id}`, {
-      headers: {
-        "authorization": this.authService.getHeaderValue()
-      }
-    }).subscribe(result => {
-      this.details = result as Details;
-    })
-  }
 }
